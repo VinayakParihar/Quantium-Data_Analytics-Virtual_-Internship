@@ -1,0 +1,11 @@
+# Task Overview
+What you'll learn
+Understand experimentation and uplift testing, comparing trial and control stores.
+Learn control store selection based on defined metrics.
+Gain experience in data visualization.
+Perform statistical analysis to assess sales differences and formulate recommendations.
+
+# What you'll do
+Define metrics to select control stores.
+Analyze trial stores against controls.
+Use R/Python for data analysis and visualization and summarise findings and provide recommendations.
