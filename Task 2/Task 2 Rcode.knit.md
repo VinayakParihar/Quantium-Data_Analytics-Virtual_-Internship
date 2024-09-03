@@ -172,6 +172,20 @@ The store with the highest score is then selected as the control store since it 
 ### Select control stores based on the highest matching store (closest to 1 but not the store itself, i.e. the second ranked highest store)
 control_store <- score_Control[order(-finalControlScore),]
 control_store <- control_store$Store2
+
+
+
+
+#### Visual checks on trends based on the drivers
+
+measureOverTimeSales <- as.data.table(measureOverTime)
+pastSales <- measureOverTimeSales[, Store_type := ifelse(STORE_NBR == trial_store, "Trial",ifelse(STORE_NBR == control_store,"Control", "Other stores"))][, totSales := mean(totSales), by = c("YEARMONTH","Store_type")][, TransactionMonth := as.Date(paste(YEARMONTH %/%100, YEARMONTH %% 100, 1, sep = "‐"), "%Y‐%m‐%d")][YEARMONTH < 201903 , ]
+
+##Visualize
+ggplot(pastSales, aes(TransactionMonth, totSales, color = Store_type)) + geom_line() + labs(x = "Month of Operation", y = "Total Sales", title = "Total Sales by Month")
+
+
+
 control_store <- control_store[2]
 
 
